@@ -42,6 +42,16 @@ exports.addUser = async (req, res, next) => {
       next(error);
     }
   };
+
+  exports.getUserById = async (req, res, next) => {
+    try {
+      Util.checkInputError(req);
+      const response = await UserService.getUserById(req.params.id);
+      res.status(response.statusCode).json(response);
+    } catch (error) {
+      next(error);
+    }
+  };
   
   exports.getAllUsers = async (req, res, next) => {
     try {

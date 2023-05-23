@@ -78,6 +78,20 @@ class UserService extends Services {
     }
   }
 
+  async getUserById(id) {
+    try {
+      Logger.info('Getting of user started for %s', id);
+      const user = await UserModel.findById(id,{ password: 0 });
+
+      if (!user) throw this.fail({ message: errorMessage.USER_NOT_FOUND, statusCode: 404 });
+      Logger.info('Getting of user completed for %s', id);
+      return this.success({ statusCode: 201, data: user });
+    } catch (error) {
+      Logger.info(`Getting of user failed for %d ${id}.Error ${error}`);
+      throw error;
+    }
+  }
+
   async getAllShops() {
     try {
       const pipeline = [{$match: {type: Config.userType.SHOP}}, {$project: {password:0}}]

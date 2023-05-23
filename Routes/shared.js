@@ -9,6 +9,8 @@ router.post("/login", userValidators.login, UserController.loginController);
 
 router.get("/users", UserController.getAllUsers);
 
+router.get("/user/:id", UserController.getUserById);
+
 router.post("/add-user", userValidators.user, UserController.addUser)
 
 router.patch('/update-user/:id', Auth ,userValidators.params, UserController.updateUser)

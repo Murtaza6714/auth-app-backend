@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 
 /* Routes defined for all module */
 
-app.use('',Shared);
+app.use('/',Shared);
 
 // error handling middleware
 app.use((error, req, res, next) => {

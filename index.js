@@ -39,7 +39,7 @@ const specs = swaggerJsDoc(options);
 
 /* Static Content Served */
 
-app.use("/", express.static(path.join(__dirname, "public/auth-dashboard")));
+// app.use("/", express.static(path.join(__dirname, "public/auth-dashboard")));
 
 app.use("/assets", express.static(path.join(__dirname, "Assets")));
 
@@ -59,6 +59,9 @@ app.use((req, res, next) => {
 });
 
 /* Routes defined for all module */
+app.get("/",(req,res) => {
+  return res.sendStatus(200)
+})
 
 app.use('/api',Shared);
 

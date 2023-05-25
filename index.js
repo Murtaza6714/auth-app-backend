@@ -85,7 +85,7 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   .then((result) => {
-    app.listen(port, "localhost", (res, err) => {
+    app.listen(port, (res, err) => {
       if (err) {
         onError(err);
       }
